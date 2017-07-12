@@ -6,6 +6,8 @@ swig.setDefaults({ cache: false });
 
 var app = express();
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+app.use(require('body-parser').urlencoded( { extended: false } ));
+app.use(require('method-override')('_method'));
 
 app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
@@ -19,13 +21,12 @@ app.get('/', function(req, res, next){
   res.render('index', { count: db.getModules().length });
 });
 
-app.get('/modules', function(req, res, next){
-  res.render('modules', { modules: db.getModules() });
+app.use('/modules', require('./routes/modules'));
+
+app.use(function(err, req, res, next){
+  res.render('error', { error: err });
 });
 
-app.get('/modules/:id', function(req, res, next){
-  res.render('module', { module: db.getModule(req.params.id*1) });
-});
 
 var port = process.env.PORT || 3000;
 

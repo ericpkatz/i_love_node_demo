@@ -6,6 +6,22 @@
     <div class='container'>
       <a href='/'>Home</a>
       <h1>Modules</h1>
+      <div class='well'>
+        <form action='/modules' method='POST'>
+          <div class='form-group'>
+            <input class='form-control' name='name' placeholder='name'/>
+          </div>
+          <div class='form-group'>
+            <input class='form-control' name='description' placeholder='description'/>
+          </div>
+          <div class='form-group'>
+            <input class='form-control' name='url' placeholder='url'/>
+          </div>
+          <div class='form-group'>
+            <button class='btn btn-primary'>Save</button>
+          </div>
+        </form>
+      </div>
       <ul class='list-group'>
         {% for module in modules %}
           <li class='list-group-item'>

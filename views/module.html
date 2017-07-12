@@ -6,6 +6,15 @@
     <div class='container'>
       <a href='/modules'>All Modules</a>
       <h1>Module - {{ module.name }}</h1>
+      <div>
+        {{ module.description }}
+
+        <br />
+        <a href='{{ module.url }}' target='_blank'>Link to documentation</a>
+        <form action='/modules/{{ module.id}}?_method=DELETE' method='POST'>
+          <button class='btn btn-danger'>Delete</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
