@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css' />
+  </head>
+  <body>
+    <div class='container'>
+      <a href='/'>Home</a>
+      <h1>Modules</h1>
+      <ul class='list-group'>
+        {% for module in modules %}
+          <li class='list-group-item'>
+            <a href='/modules/{{ module.id }}'>
+              {{ module.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
